@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1080" height="1080" viewBox="0 0 1080 1080" xml:space="preserve">
+<desc>Created with Fabric.js 5.2.4</desc>
+<defs>
+</defs>
+<g transform="matrix(1 0 0 1 540 540)" id="2fdf6b32-bc0d-4cd3-91da-14ef4235c7d8"  >
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1; visibility: hidden;" vector-effect="non-scaling-stroke"  x="-540" y="-540" rx="0" ry="0" width="1080" height="1080" />
+</g>
+<g transform="matrix(1 0 0 1 540 540)" id="79abcd30-a119-4f5b-b9f9-f49f8d4220ab"  >
+</g>
+<g transform="matrix(1 0 0 1 540 540)" id="aef393f3-e869-4528-94fc-502d031a3ec8"  >
+<path style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-256, -256)" d="M 270.7 9.7 C 268.2 3.8 262.4 0 256 0 C 249.60000000000002 0 243.8 3.8 241.3 9.7 L 197.2 112.6 C 193.79999999999998 120.6 192 129.1 192 137.79999999999998 L 192 214.79999999999998 L 48 298.79999999999995 L 48 280 C 48 266.7 37.3 256 24 256 C 10.700000000000003 256 0 266.7 0 280 L 0 336 L 0 368 L 0 392 C 0 405.3 10.7 416 24 416 C 37.3 416 48 405.3 48 392 L 48 384 L 192 384 L 192 416.7 L 133.5 468 C 130 471 128 475.4 128 480 L 128 496 C 128 504.8 135.2 512 144 512 L 240 512 L 240 448 C 240 439.2 247.2 432 256 432 C 264.8 432 272 439.2 272 448 L 272 512 L 368 512 C 376.8 512 384 504.8 384 496 L 384 480 C 384 475.4 382 471 378.5 468 L 320 416.7 L 320 384 L 464 384 L 464 392 C 464 405.3 474.7 416 488 416 C 501.3 416 512 405.3 512 392 L 512 368 L 512 336 L 512 280 C 512 266.7 501.3 256 488 256 C 474.7 256 464 266.7 464 280 L 464 298.8 L 320 214.8 L 320 137.8 C 320 129.10000000000002 318.2 120.60000000000001 314.8 112.60000000000001 L 270.7 9.7 z" stroke-linecap="round" />
+</g>
+</svg>
