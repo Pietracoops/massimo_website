@@ -107,10 +107,6 @@ const projectCardsAppendToDom = function (projectsByLanguage) {
         projectsByLanguage[i].language.replace(/\s+/g, "-"),
         "isotope-item"
       );
-      //   cardContainer.style.position = "absolute";
-      //   cardContainer.style.left = "0px";
-      //   cardContainer.style.top = "0px";
-      //   cardContainer.style.transform = "translate3d(15px, 380px, 0px)";
       linkToRepo.setAttribute("href", projectsByLanguage[i].projects[j].url);
       repoImg.setAttribute("src", "img/Portfolio-pic1.jpg");
       projectName.textContent = projectsByLanguage[i].projects[j].name;
@@ -130,6 +126,5 @@ const projectCardsAppendToDom = function (projectsByLanguage) {
 // IMMEDIATELY INVOKED FUNCTION THAT CONTROLS THE FLOW OF THE DATA FETCHING AND THE APPENDING OF THE CARDS TO THE DOM
 (async function controller() {
   const retrievedData = getGitHubRepos();
-  console.log(await retrievedData);
   projectCardsAppendToDom(await retrievedData);
 })();
