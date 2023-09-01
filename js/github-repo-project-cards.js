@@ -104,14 +104,15 @@ const projectCardsAppendToDom = function (projectsByLanguage) {
       // Assign classes and text content
       cardContainer.classList.add(
         "Portfolio-box",
-        projectsByLanguage[i].language.replace(/\s+/g, "-"),
-        "isotope-item"
+        projectsByLanguage[i].language.replace(/\s+/g, "-")
       );
       linkToRepo.setAttribute("href", projectsByLanguage[i].projects[j].url);
       repoImg.setAttribute("src", "img/Portfolio-pic1.jpg");
       projectName.textContent = projectsByLanguage[i].projects[j].name;
       projectDescription.textContent =
         projectsByLanguage[i].projects[j].description;
+
+      // projectsByLanguage[i].projects[j].description
 
       // Append card to dom
       portfolioContainer.appendChild(cardContainer);
@@ -123,8 +124,95 @@ const projectCardsAppendToDom = function (projectsByLanguage) {
   }
 };
 
+// MIGRATED JQUERY SCRIPTS FROM INDEX FILE, RESPONSIBLE FOR STYLING THE PORTFOLIO SECTION
+function stylePortfolioSection() {
+  $(document).ready(function (e) {
+    $("#test").scrollToFixed();
+    $(".res-nav_click").click(function () {
+      $(".main-nav").slideToggle();
+      return false;
+    });
+
+    $(".Portfolio-box").magnificPopup({
+      delegate: "a",
+      type: "image",
+    });
+  });
+
+  wow = new WOW({
+    animateClass: "animated",
+    offset: 100,
+  });
+  wow.init();
+
+  $(window).load(function () {
+    $(".main-nav li a, .servicelink").bind("click", function (event) {
+      var $anchor = $(this);
+
+      $("html, body")
+        .stop()
+        .animate(
+          {
+            scrollTop: $($anchor.attr("href")).offset().top - 102,
+          },
+          1500,
+          "easeInOutExpo"
+        );
+      /*
+  			if you don't want to use the easing effects:
+  			$('html, body').stop().animate({
+  				scrollTop: $($anchor.attr('href')).offset().top
+  			}, 1000);
+  			*/
+      if ($(window).width() < 768) {
+        $(".main-nav").hide();
+      }
+      event.preventDefault();
+    });
+  });
+
+  $(window).load(function () {
+    var $container = $(".portfolioContainer"),
+      $body = $("body"),
+      colW = 375,
+      columns = null;
+
+    $container.isotope({
+      // disable window resizing
+      resizable: true,
+      masonry: {
+        columnWidth: colW,
+      },
+    });
+
+    $(window)
+      .smartresize(function () {
+        // check if columns has changed
+        var currentColumns = Math.floor(($body.width() - 30) / colW);
+        if (currentColumns !== columns) {
+          // set new column count
+          columns = currentColumns;
+          // apply width to container manually, then trigger relayout
+          $container.width(columns * colW).isotope("reLayout");
+        }
+      })
+      .smartresize(); // trigger resize to set container width
+    $(".portfolioFilter a").click(function () {
+      $(".portfolioFilter .current").removeClass("current");
+      $(this).addClass("current");
+
+      var selector = $(this).attr("data-filter");
+      $container.isotope({
+        filter: selector,
+      });
+      return false;
+    });
+  });
+}
+
 // IMMEDIATELY INVOKED FUNCTION THAT CONTROLS THE FLOW OF THE DATA FETCHING AND THE APPENDING OF THE CARDS TO THE DOM
 (async function controller() {
   const retrievedData = getGitHubRepos();
   projectCardsAppendToDom(await retrievedData);
+  stylePortfolioSection();
 })();
