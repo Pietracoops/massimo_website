@@ -398,6 +398,7 @@ color: #D7DADC;
 	transition:all 0.3s ease-in-out;
 	-moz-transition:all 0.3s ease-in-out;
 	-webkit-transition:all 0.3s ease-in-out;
+	text-decoration:none;
 }
 .Portfolio-nav li a:hover{
 	background:#0066CC;
@@ -419,6 +420,8 @@ color: #D7DADC;
 	float:left;
 	padding:0;
 }
+
+
 .Portfolio-box img{
 	margin-bottom:25px;
 	transition:all 0.3s ease-in-out;
@@ -669,12 +672,19 @@ border: 2px solid #fff;
 
 /* Contact
 ---------------------------------*/
+.centered-div {
+	display: flex;
+	justify-content: center; /* Center horizontally */
+	align-items: center; /* Center vertically */
+	height: 50vh; /* 100% of the viewport height */
+  }
+
 .main-section.contact{
 	padding:90px 0 100px;
 }
 
 .main-section.contact{
-	background:url(../img/bg-map.png) left 190px no-repeat;
+	background-color: #1A1A1B;
 }
 .contact-info-box{
 	font-size:15px;
@@ -832,7 +842,7 @@ border: 2px solid #fff;
 ---------------------------------*/
 
 .footer{
-	background:url(../img/pw_maze_black_2X.png) left top repeat;
+	background:url(../img/cog1.png) left top repeat;
 	padding:35px 0 35px;
 }
 .footer-logo{
