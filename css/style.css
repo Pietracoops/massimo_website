@@ -131,6 +131,11 @@ p{
 	-webkit-transition: .6s ease-in-out;
 }
 
+@media (max-width: 768px) {
+	.bg_img {
+		padding: 100px 0;
+	}
+}
 
 .dots {
 	display: flex;
