@@ -148,10 +148,10 @@ function stylePortfolioSection() {
       return false;
     });
 
-    $(".Portfolio-box").magnificPopup({
+    /*$(".Portfolio-box").magnificPopup({
       delegate: "a",
       type: "image",
-    });
+    });*/
   });
 
   wow = new WOW({
@@ -233,9 +233,9 @@ function stylePortfolioSection() {
 })();
 
 
-function confirmImageLoad() {
-  return confirm("The image could not be loaded. Do you want to proceed to the link?");
-}
+// function confirmImageLoad() {
+//   return confirm("The image could not be loaded. Do you want to proceed to the link?");
+// }
 
 // function imageLoadError() {
 //   alert("The image could not be loaded.");
