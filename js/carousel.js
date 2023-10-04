@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Change background image of the header to the selected image
         const selectedImageIndex = index + 1; // Assumes the image file names are sequential like "image1.jpg", "image2.jpg", etc.
         const selectedImageSrc = `img/cog${selectedImageIndex}.png`; // Update the image source path accordingly
-        document.getElementById("bg_img").style.backgroundImage = `url(${selectedImageSrc})`;
+        document.getElementById("header").style.backgroundImage = `url(${selectedImageSrc})`;
         document.getElementById("footer").style.backgroundImage = `url(${selectedImageSrc})`;
       });
 
