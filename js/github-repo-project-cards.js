@@ -42,7 +42,8 @@ const getGitHubRepos = async function () {
     const projectsByLanguage = [];
 
     // Organize the objects within the array by language
-    for (let i = 0; i < sortedUniqueLanguages.length; i++) {
+    for (let i = 0; i < sortedUniqueLanguages.length; i++) 
+    {
       projectsByLanguage.push({
         language: sortedUniqueLanguages[i] || "other", // Some repos from the api call may have languages that equal to null
         projects: [],
@@ -62,6 +63,23 @@ const getGitHubRepos = async function () {
         }
       });
     }
+
+    // Swap the Other tag to the end of the list
+    indexOfOther = -1
+    for (let i = 0; i < projectsByLanguage.length; i++)
+    {
+      if (projectsByLanguage[i].language == 'other')
+      {
+        indexOfOther = i
+        break
+      } 
+    }
+
+    if (indexOfOther !== -1) {
+      const removedItem = projectsByLanguage.splice(indexOfOther, 1);
+      projectsByLanguage.push(removedItem[0]);
+    }
+
     return projectsByLanguage;
   } catch (error) {
     throw error;
@@ -82,11 +100,8 @@ const projectCardsAppendToDom = function (projectsByLanguage) {
     const navButtonAnchorTag = document.createElement("a");
 
     // Assign classes, attributes and text
-    navButtonAnchorTag.setAttribute("href", "#");
-    navButtonAnchorTag.setAttribute(
-      "data-filter",
-      `.${projectsByLanguage[i].language.replace(/\s+/g, "-")}`
-    );
+    navButtonAnchorTag.setAttribute("href", "");
+    navButtonAnchorTag.setAttribute("data-filter",`.${projectsByLanguage[i].language.replaceAll('+', "p").replaceAll('#', "h").replaceAll(' ', "_")}`);
     navButtonAnchorTag.textContent = projectsByLanguage[i].language;
 
     // Append navigation button to dom
@@ -102,15 +117,15 @@ const projectCardsAppendToDom = function (projectsByLanguage) {
       const projectDescription = document.createElement("p");
 
       // Assign classes and text content
-      cardContainer.classList.add(
-        "Portfolio-box",
-        projectsByLanguage[i].language.replace(/\s+/g, "-")
-      );
+      cardContainer.classList.add("Portfolio-box", projectsByLanguage[i].language.replaceAll('+', "p").replaceAll('#', 'h').replaceAll(' ', "_"));
       linkToRepo.setAttribute("href", projectsByLanguage[i].projects[j].url);
-      repoImg.setAttribute("src", "img/Portfolio-pic1.jpg");
+      /*repoImg.setAttribute("src", "img/Portfolio-pic1.jpg");*/
+      repoImg.setAttribute("src", "img/" + projectsByLanguage[i].projects[j].name + ".png");
+      repoImg.setAttribute("onerror", "imageLoadError()");
+      linkToRepo.setAttribute("onclick", "return confirmImageLoad()");
+      
       projectName.textContent = projectsByLanguage[i].projects[j].name;
-      projectDescription.textContent =
-        projectsByLanguage[i].projects[j].description;
+      projectDescription.textContent = projectsByLanguage[i].projects[j].description;
 
       // projectsByLanguage[i].projects[j].description
 
@@ -216,3 +231,12 @@ function stylePortfolioSection() {
   projectCardsAppendToDom(await retrievedData);
   stylePortfolioSection();
 })();
+
+
+function confirmImageLoad() {
+  return confirm("The image could not be loaded. Do you want to proceed to the link?");
+}
+
+// function imageLoadError() {
+//   alert("The image could not be loaded.");
+// }
