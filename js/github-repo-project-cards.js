@@ -119,6 +119,7 @@ const projectCardsAppendToDom = function (projectsByLanguage) {
       // Assign classes and text content
       cardContainer.classList.add("Portfolio-box", projectsByLanguage[i].language.replaceAll('+', "p").replaceAll('#', 'h').replaceAll(' ', "_"));
       linkToRepo.setAttribute("href", projectsByLanguage[i].projects[j].url);
+      linkToRepo.setAttribute("target", "_blank");
       /*repoImg.setAttribute("src", "img/Portfolio-pic1.jpg");*/
       repoImg.setAttribute("src", "img/" + projectsByLanguage[i].projects[j].name + ".png");
       repoImg.setAttribute("onerror", "imageLoadError()");
@@ -136,6 +137,7 @@ const projectCardsAppendToDom = function (projectsByLanguage) {
       cardContainer.appendChild(projectName);
       cardContainer.appendChild(projectDescription);
     }
+
   }
 };
 
