@@ -1,9 +1,10 @@
 // SELECTED GITHUB ACCOUNT FROM THE GITHUB API
-const url = "https://api.github.com/users/pietracoops/repos";
 
 // THIS FUNCTION FETCHES THE REPOS FROM THE ACCOUNT,AND RETURNS THE NECESSARY DATA FROM EACH PROJECT, ORGANIZED BY LANGUAGE
-const getGitHubRepos = async function () {
+async function getGitHubRepos() {
   try {
+    const url = "https://api.github.com/users/pietracoops/repos";
+
     // Fetch repo data
     const data = await fetch(url);
     const dataJSON = await data.json();
@@ -86,13 +87,25 @@ const getGitHubRepos = async function () {
   }
 };
 
+
 // THIS FUNCTION THAT CREATES PROJECT CARDS AND APPENDS THEM TO THE DOM OF THE WEBSITE
-const projectCardsAppendToDom = function (projectsByLanguage) {
+function projectCardsAppendToDom(projectsByLanguage) {
+  
   console.log(projectsByLanguage);
 
   // Declare elements in html that this function will interact with
   const portfolioNav = document.querySelector(".Portfolio-nav");
   const portfolioContainer = document.querySelector(".portfolioContainer");
+
+
+  navButton = document.createElement("li");
+  navButtonAnchorTag = document.createElement("a");
+  navButtonAnchorTag.setAttribute("href", "");
+  navButtonAnchorTag.setAttribute("data-filter",".AI");
+  navButtonAnchorTag.textContent = "AI";
+  navButton.appendChild(navButtonAnchorTag);
+  portfolioNav.appendChild(navButton);
+  
 
   for (let i = 0; i < projectsByLanguage.length; i++) {
     // Create navigation button for language
@@ -105,8 +118,9 @@ const projectCardsAppendToDom = function (projectsByLanguage) {
     navButtonAnchorTag.textContent = projectsByLanguage[i].language;
 
     // Append navigation button to dom
-    portfolioNav.appendChild(navButton);
     navButton.appendChild(navButtonAnchorTag);
+    portfolioNav.appendChild(navButton);
+    
 
     for (let j = 0; j < projectsByLanguage[i].projects.length; j++) {
       // Create elements for cards
@@ -117,7 +131,21 @@ const projectCardsAppendToDom = function (projectsByLanguage) {
       const projectDescription = document.createElement("p");
 
       // Assign classes and text content
-      cardContainer.classList.add("Portfolio-box", projectsByLanguage[i].language.replaceAll('+', "p").replaceAll('#', 'h').replaceAll(' ', "_"));
+      if (projectsByLanguage[i].projects[j].name == "COEN432_Machine_Learning " ||
+          projectsByLanguage[i].projects[j].name == "AI_Pilot_Runner" ||
+          projectsByLanguage[i].projects[j].name == "rs3_dynamic_programming" ||
+          projectsByLanguage[i].projects[j].name == "IFT6135_A2_GPT" ||
+          projectsByLanguage[i].projects[j].name == "DeepRLProj" ||
+          projectsByLanguage[i].projects[j].name == "COEN432_GA" ||
+          projectsByLanguage[i].projects[j].name == "Siamese_LSTM_POC") {
+          cardContainer.classList.add("Portfolio-box", projectsByLanguage[i].language.replaceAll('+', "p").replaceAll('#', 'h').replaceAll(' ', "_"), "AI");
+          console.log("AI");
+      }
+      else
+      {
+        cardContainer.classList.add("Portfolio-box", projectsByLanguage[i].language.replaceAll('+', "p").replaceAll('#', 'h').replaceAll(' ', "_"));
+      }
+
       linkToRepo.setAttribute("href", projectsByLanguage[i].projects[j].url);
       linkToRepo.setAttribute("target", "_blank");
       /*repoImg.setAttribute("src", "img/Portfolio-pic1.jpg");*/
@@ -141,8 +169,11 @@ const projectCardsAppendToDom = function (projectsByLanguage) {
   }
 };
 
+
+
 // MIGRATED JQUERY SCRIPTS FROM INDEX FILE, RESPONSIBLE FOR STYLING THE PORTFOLIO SECTION
-function stylePortfolioSection() {
+function stylePortfolioSection() 
+{
   $(document).ready(function (e) {
     $("#test").scrollToFixed();
     $(".res-nav_click").click(function () {
@@ -227,18 +258,12 @@ function stylePortfolioSection() {
   });
 }
 
-// IMMEDIATELY INVOKED FUNCTION THAT CONTROLS THE FLOW OF THE DATA FETCHING AND THE APPENDING OF THE CARDS TO THE DOM
+
 (async function controller() {
-  const retrievedData = getGitHubRepos();
-  projectCardsAppendToDom(await retrievedData);
-  stylePortfolioSection();
+ //const retrievedData = await getGitHubRepos();
+ //projectCardsAppendToDom(await retrievedData);
+ stylePortfolioSection();
+
+//  functionCompletionTimestamp = new Date();
+//  console.log("stylePortfolioSectionAsync Functions finished at: " + functionCompletionTimestamp);
 })();
-
-
-// function confirmImageLoad() {
-//   return confirm("The image could not be loaded. Do you want to proceed to the link?");
-// }
-
-// function imageLoadError() {
-//   alert("The image could not be loaded.");
-// }
