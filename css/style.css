@@ -94,6 +94,77 @@ p{
 	margin:0;
 }
 
+/*--------------------------------------------------------------
+# About Us
+--------------------------------------------------------------*/
+
+section {
+	padding: 60px 0;
+	overflow: hidden;
+  }
+  
+  .section-bg {
+	background-color: whitesmoke;
+  }
+  
+  .section-title {
+	text-align: center;
+	padding-bottom: 40px;
+  }
+  
+  .section-title h2 {
+	font-size: 32px;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-bottom: 15px;
+	padding-bottom: 0;
+	color: #151515;
+  }
+  
+  .section-title p {
+	margin-bottom: 0;
+	color: #aeaeae;
+  }
+
+.about .image {
+	padding: 20px;
+	box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .img-fluid {
+	max-width: 100%;
+	height: auto;
+  }
+
+  .about .content h3 {
+	font-weight: 600;
+	font-size: 26px;
+  }
+  
+  .about .content ul {
+	list-style: none;
+	padding: 0;
+  }
+  
+  .about .content ul li {
+	padding-bottom: 10px;
+	display: flex;
+	align-items: flex-start;
+  }
+  
+  .about .content ul i {
+	font-size: 24px;
+	padding: 2px 6px 0 0;
+	color: #7cc576;
+  }
+  
+  .about .content p:last-child {
+	margin-bottom: 0;
+  }
+
+  .about{
+	background:#0f202e;
+}
 
 /* Header Styles
 ---------------------------------*/
@@ -233,7 +304,7 @@ color: #D7DADC;
 
 .link{
 	padding:15px 35px;
-	background:#64B88E;
+	background:#2d608b;
 	color:#D7DADC !important;
 	font-size:16px;
 	font-weight:400;
@@ -246,15 +317,16 @@ color: #D7DADC;
 	transition:all 0.3s ease-in-out;
 	-moz-transition:all 0.3s ease-in-out;
 	-webkit-transition:all 0.3s ease-in-out;
+	text-decoration:none;
 }
 .link:hover {
 	text-decoration:none;
-	color:#64B88E !important;
-	background:#D7DADC;
+	color:#0f3843 !important;
+	background:#93bbdc;
 }
 
 .link:active, .link:focus {
-	background: #64B88E;
+	background: #2d608b;
 	text-decoration:none;
 	color:#fff !important;
 }
